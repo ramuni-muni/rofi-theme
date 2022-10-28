@@ -1,110 +1,213 @@
+/**
+ * ROFI Color theme
+ * User: Qball
+ * Copyright: Dave Davenport
+ */
 configuration {
-	font:							"Iosevka Nerd Font 10";
-    show-icons:                     true;
-	icon-theme: 					"Tango";
-    display-drun: 					"  ";
-    drun-display-format:            "{name}";
-    disable-history:                true;
-	sidebar-mode: 					false;
+    drun-display-format: "{name}";
+    disable-history: true;
 }
+* {
+    foreground:  white;
+    backlight:   #ccffeedd;
+    background-color:  transparent;
+    dark: #1c1c1c;
+    // Black
+    black:       #000000;
+    lightblack:  #554444;
+    tlightblack:  #554444cc;
+    //
+    // Red
+    red:         #cd5c5c;
+    lightred:    #cc5533;
+    //
+    // Green
+    green:       #86af80;
+    lightgreen:  #88cc22;
+    //
+    // Yellow
+    yellow:      #e8ae5b;
+    lightyellow:     #ffa75d;
+    //
+    // Blue
+    blue:      #6495ed;
+    lightblue:     #87ceeb;
+    //
+    // Magenta
+    magenta:      #deb887;
+    lightmagenta:     #996600;
+    //
+    // Cyan
+    cyan:      #b0c4de;
+    tcyan:      #ccb0c4de;
+    lightcyan:     #b0c4de;
+    //
+    // White
+    white:      #bbaa99;
+    lightwhite:     #ddccbb;
+    //
+    // Bold, Italic, Underline
+    highlight:     underline bold #ffffff;
 
-@import "colors.rasi"
-
+    transparent: rgba(0,0,0,0);
+    font: "Source Code Pro 10";
+}
+   
 window {
-    transparency:                   "real";
-    background-color:               @bg;
-    text-color:                     @fg;
-	border:							0px;
-	border-color:					@ac;
-    border-radius:                  12px;
-	width:							20%;
-    location:                       southwest;
-    x-offset:                       10;
-    y-offset:                       -33;
+    height:   70%;
+    width: 13em;
+    location: south west;
+    anchor:   west;
+
+    border-color: grey;
+    text-color: white;
+    
+    border-radius: 5px;
+    y-offset: -10px;
+    x-offset: 10px;
+    children: [ inputbar, message, listview ];
+
+    transparency: "screenshot";
+    padding: 10px;
+    border:  1px;
+    border-radius: 10px;
+    color: white;
+    background-color: rgba(0,0,0,0.75);
+    spacing: 0;
+
+}
+scrollbar {
+    width: 0px ;
+    border: 0;
+    handle-width: 0px ;
+    padding: 0;
 }
 
-prompt {
-    enabled: 						true;
-	padding: 						0.30% 1% 0% -0.5%;
-	background-color: 				@al;
-	text-color: 					@fg;
-	font:							"FantasqueSansMono Nerd Font 12";
+message {
+    border-color: @foreground;
+    border:  0px 2px 2px 2px;
+//    border-radius: 10px;
+    padding: 5;
+    background-color: @tcyan;
 }
-
-entry {
-    background-color:               @al;
-    text-color:                     @fg;
-    placeholder-color:              @fg;
-    expand:                         true;
-    horizontal-align:               0;
-    placeholder:                    "Search";
-    padding:                        0.10% 0% 0% 0%;
-    blink:                          true;
+message {
+    font: "Source Code Pro 8";
+    color: @black;
 }
-
 inputbar {
-	children: 						[ prompt, entry ];
-    background-color:               @bg;
-    text-color:                     @fg;
-    expand:                         false;
-	border:							0% 0% 0% 0%;
-    border-radius:                  0px;
-	border-color:					@ac;
-    margin:                         0% 0% 0% 0%;
-    padding:                        1.5%;
+    color: grey;
+    padding: 5px;
+    background-color: rgba(0,0,0,0.5);
+    border: 1px;
+    border-radius:  5px;
+
+    font: "Source Code Pro 10";
+    children: [ icon-k, entry ];
 }
 
+    icon-k {
+    expand: false;
+    filename: "gohome";
+    size: 24;
+    vertical-align: 0.5;
+
+}
+
+entry,prompt,case-indicator {
+    text-font: inherit;
+    text-color:inherit;
+    padding: 2px;
+}
+prompt {
+    margin:     0px 0.3em 0em 0em ;
+}
 listview {
-    background-color:               @al;
-    padding:                        10px;
-    columns:                        1;
-    lines:                          15;
-    spacing:                        1%;
-    cycle:                          false;
-    dynamic:                        true;
-    layout:                         vertical;
-}
+    padding: 3px;
+    border-radius: 0px 0px 0px 0px;
 
-mainbox {
-    background-color:               @al;
-	border:							0% 0% 0% 0%;
-    border-radius:                  0% 0% 0% 0%;
-	border-color:					@ac;
-    children:                       [ inputbar, listview ];
-    spacing:                       	0%;
-    padding:                        0%;
+    border: 0px;
+    background-color: rgba(0,0,0,0);
+    dynamic: false;
+    reverse: false;
+    cycle: false;
 }
-
 element {
-    background-color:               @al;
-    text-color:                     @fg;
-    orientation:                    horizontal;
-    border-radius:                  0%;
-    padding:                        0.5% 0.5% 0.5% 0.5%;
+    padding: 1px;
+    vertical-align: 0.5;
+//    border: 2px;
+    border-radius: 1px;
+    background-color: rgba(0,0,0,0);
+    color: white;
+    font: inherit;
+    children: [ element-icon, element-text ];
 }
-
-element-icon {
-    background-color: 				inherit;
-    text-color:       				inherit;
-    horizontal-align:               0.5;
-    vertical-align:                 0.5;
-    size:                           24px;
-    border:                         0px;
-}
-
 element-text {
-    background-color: 				@al;
-    text-color:       				inherit;
-    expand:                         true;
-    horizontal-align:               0;
-    vertical-align:                 0.5;
-    margin:                         0% 0.25% 0% 0.25%;
+    background-color: inherit;
+    text-color:       inherit;
+}
+element.selected.normal {
+    background-color: @blue;
+}
+element.normal.active {
+    foreground: @lightblue;
+}
+element.normal.urgent {
+    foreground: @lightred;
+}
+element.alternate.normal {
+    background-color: rgba(0,0,0,0);
+}
+element.normal.normal {
+    background-color: rgba(0,0,0,0);
 }
 
-element selected {
-    background-color:               @ac;
-    text-color:                     @bg;
-	border:							0% 0% 0% 0%;
-    border-radius:                  12px;
-    border-color:                  	@bg;
+element.alternate.active {
+    foreground: @lightblue;
+}
+element.alternate.urgent {
+    foreground: @lightred;
+}
+element.selected.active {
+    background-color: @lightblue;
+    foreground: @dark;
+}
+element.selected.urgent {
+    background-color: @lightred;
+    foreground: @dark;
+}
+vertb {
+    expand: false;
+    children: [ dummy0, mode-switcher, dummy1  ];
+}
+dummy0,  dummy1 {
+    expand: true;
+}
+mode-switcher {
+    expand: false;
+    orientation: vertical;
+    spacing: 0px;
+    border: 0px 0px 0px 0px;
+}
+button {
+    font: "FontAwesome 22";
+    padding: 6px;
+    border: 2px 0px 2px 2px;
+    border-radius: 4px 0px 0px 4px;
+    background-color: @tlightblack;
+    border-color: @foreground;
+    color: @foreground;
+    horizontal-align: 0.5;
+}
+button selected normal {
+    color: @dark;
+    border: 2px 0px 2px 2px;
+    background-color: @backlight;
+    border-color: @foreground;
+}
+error-message {
+    expand: true;
+    background-color: red;
+    border-color: darkred;
+    border: 2px;
+    padding: 1em;
 }
